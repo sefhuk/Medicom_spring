@@ -1,5 +1,5 @@
 # 메디콤
-![logo](https://kdt-gitlab.elice.io/cloud_track/class_03/web_project3/team05/readmeimage/-/raw/master/logo.jpg)
+![logo (1)](https://github.com/user-attachments/assets/1c157835-d764-46e6-bcf5-c250ff089ba2)
 
 #### 원인 모를 통증과 증상을 통해 의심되는 질병을 알려주고,
 #### 어떤 진료과를 가야하는지와 근처에 있는 해당 진료과 병원을 찾아주는 시스템
@@ -28,7 +28,8 @@
 
 ## ERD 및 와이어프레임
 ### ERD
-![erd](https://kdt-gitlab.elice.io/cloud_track/class_03/web_project3/team05/readmeimage/-/raw/master/erd.png)
+![medi-erd](https://github.com/user-attachments/assets/22b888e7-c908-4473-adb5-7d6cea5b4c47)
+
 
 ### 와이어 프레임
 https://www.figma.com/design/GX6CyJdzJCfZVgUN4t9mZd/elice-project3?node-id=0-1&t=8cqv2TCWyLXtmpu7-0
