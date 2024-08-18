@@ -5,16 +5,6 @@
 #### 어떤 진료과를 가야하는지와 근처에 있는 해당 진료과 병원을 찾아주는 시스템
 
 ## 기술 스택
-
-### 백엔드
-- SpringBoot
-- Spring Data JPA
-- Spring Security
-- MySQL
-- JWT
-- Gemini API
-
-### 프론트엔드
 - React
 - Nginx
 - Axios
