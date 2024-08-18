@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class HospitalService {
@@ -28,8 +25,8 @@ public class HospitalService {
     @Autowired
     private HospitalDepartmentMapper hospitalDepartmentMapper;
 
-    public Page<Hospital> searchHospitals(String name, String address, String departmentName, Double latitude, Double longitude, int page, int size) {
-        List<Hospital> filteredHospitals = hospitalRepository.searchHospitals(name, address, departmentName);
+    public Page<Hospital> searchHospitals(String name, String address, String departmentName, List<String> departmentNames, Double latitude, Double longitude, int page, int size) {
+        List<Hospital> filteredHospitals = hospitalRepository.searchHospitals(name, address, departmentName, departmentNames);
 
         if (latitude != null && longitude != null) {
             filteredHospitals.sort((h1, h2) -> {
@@ -59,7 +56,7 @@ public class HospitalService {
         return calculateDistance(userLat, userLon, hospitalLat, hospitalLon);
     }
 
-    private double calculateDistance(double userLat, double userLon, double hospitalLat, double hospitalLon) {
+    public double calculateDistance(double userLat, double userLon, double hospitalLat, double hospitalLon) {
         final int R = 6371;
         double latDistance = Math.toRadians(hospitalLat - userLat);
         double lonDistance = Math.toRadians(hospitalLon - userLon);
@@ -72,6 +69,13 @@ public class HospitalService {
 
     public HospitalDTO convertToDto(Hospital hospital) {
         return hospitalDepartmentMapper.convertToDto(hospital);
+    }
+
+    //distance 설정
+    public HospitalDTO convertToDto(Hospital hospital, Double distance) {
+        HospitalDTO dto = convertToDto(hospital);
+        dto.setDistance(distance);
+        return dto;
     }
 
     public List<HospitalDTO> getAllHospitalsWithDepartments() {
@@ -111,9 +115,6 @@ public class HospitalService {
         return hospitalDTO;
     }
 
-
-
-
     public List<Hospital> getHospitalByNameContained(String name){
         List<Hospital> hospitals = hospitalRepository.findByNameContains(name);
         for(Hospital hospital : hospitals){
@@ -125,3 +126,4 @@ public class HospitalService {
         return hospitals;
     }
 }
+
